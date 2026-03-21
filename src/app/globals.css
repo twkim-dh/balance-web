@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
 :root {
+  --blue: #3B82F6;
+  --red: #EF4444;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-blue: #3B82F6;
+  --color-red: #EF4444;
+  --color-blue-light: #DBEAFE;
+  --color-red-light: #FEE2E2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* VS animation */
+@keyframes vs-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+.vs-animate {
+  animation: vs-pulse 2s ease-in-out infinite;
+}
+
+/* Percentage bar animation */
+@keyframes fill-bar {
+  from {
+    width: 0%;
+  }
+}
+
+.bar-animate-a {
+  animation: fill-bar 0.8s ease-out forwards;
+}
+
+.bar-animate-b {
+  animation: fill-bar 0.8s ease-out forwards;
+}
+
+/* Card hover effects */
+.option-card-a {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.option-card-a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.option-card-b {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.option-card-b:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+/* Kakao share button */
+.kakao-btn {
+  background: #FEE500;
+  color: #191919;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.kakao-btn:hover {
+  background: #F5DC00;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
 }
